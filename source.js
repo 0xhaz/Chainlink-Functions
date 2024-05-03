@@ -1,5 +1,5 @@
 const gptPrompt = args[0];
-
+///
 const postData = {
   model: "gpt-3.5-turbo",
   messages: [{ role: "user", content: gptPrompt }],
