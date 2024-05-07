@@ -4,12 +4,22 @@ const { networks } = require("../networks.js");
 const { ContractFactory, utils } = require("ethers");
 
 const NETWORK = "ethereumSepolia";
+//
 
 const routerAddress = networks[NETWORK].functionsRouter;
 const donIdBytes32 = utils.formatBytes32String(networks[NETWORK].donId);
 
 const deployFunctionsConsumerContract = async () => {
-  console.log(routerAddress, donIdBytes32);
+  const contractFactory = new ContractFactory(abi, bytecode, wallet);
+
+  console.log(`\nDeploying the Functions Consumer Contract on ${NETWORK}...`);
+
+  const functionsConsumerContract = await contractFactory
+    .connect(signer)
+    .deploy(routerAddress, donIdBytes32);
+
+  await functionsConsumerContract.deployed();
+  console.log(`\nDeployed at address: ${functionsConsumerContract.address}`);
 };
 
 deployFunctionsConsumerContract().catch(err => {
