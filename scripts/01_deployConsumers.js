@@ -4,7 +4,6 @@ const { networks } = require("../networks.js");
 const { ContractFactory, utils } = require("ethers");
 
 const NETWORK = "ethereumSepolia";
-//
 
 const routerAddress = networks[NETWORK].functionsRouter;
 const donIdBytes32 = utils.formatBytes32String(networks[NETWORK].donId);
